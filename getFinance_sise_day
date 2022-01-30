@@ -1,0 +1,14 @@
+import pandas as pd
+import requests
+
+url = "https://finance.naver.com/item/sise_day.nhn?code=005930"
+resp = requests.get(url, headers={"user-agent": "Mozilla"})
+df = pd.read_html(resp.text)
+print(df[0].dropna(axis=0))
+
+
+# Naver finance 종목별 일별 시세 정보 (삼성전자)
+
+# 네이버 웹서버의 정책 변경으로 header 정보 없는 스크래핑이 차단되었습니다.
+# header 정보와 함께 requests 모듈로 HTML 데이터를 얻어온 다음 read_html 메서드를 호출해야 합니다.
+
